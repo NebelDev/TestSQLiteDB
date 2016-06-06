@@ -7,12 +7,21 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
+    private static DatabaseHelper db;
+
     //Generic info
     private static final String DATABASE_NAME = "sqlitedb.sqlite";
     private static final int DATABASE_VERSION = 1;
 
-    public DatabaseHelper(Context context) {
+    private DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+    }
+
+    public static DatabaseHelper getInstance(Context cx) {
+        if(db == null){
+            db = new DatabaseHelper(cx.getApplicationContext());
+        }
+        return db;
     }
 
     @Override
