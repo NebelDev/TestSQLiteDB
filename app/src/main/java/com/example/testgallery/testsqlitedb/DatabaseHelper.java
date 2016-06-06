@@ -17,7 +17,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-
+        final String CREATE_DATABASE = "CREATE TABLE pets (_id INTEGER PRIMARY, name TEXT)";
+        sqLiteDatabase.execSQL(CREATE_DATABASE);
     }
 
     @Override
