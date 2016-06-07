@@ -19,12 +19,13 @@ public class MainActivity extends AppCompatActivity {
         conV.put("name","bau");
         long rows = sql.insert("pets", "name", conV);*/
 
-
         SQLiteDatabase dbCon = db.getReadableDatabase();
         Cursor cur = dbCon.rawQuery("SELECT name FROM pets", null);
         cur.moveToFirst();
         String nome = cur.getString(0);
-        ((TextView)findViewById(R.id.idDb)).setText(nome);
+
         cur.close();
+
+        ((TextView)findViewById(R.id.idDb)).setText(nome);
     }
 }
